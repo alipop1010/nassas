@@ -1,25 +1,37 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// https://vitejs.dev/config/
 export default defineConfig({
+  base: '/nassas/', // Важно: должно совпадать с именем репозитория
   plugins: [react()],
-  server: {
-    host: true, // Доступ по сети
-    port: 5173, // Порт разработки
-    strictPort: true, // Запрет автоматической смены порта
-    headers: {
-      "Access-Control-Allow-Origin": "*", // Разрешить CORS
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      
-    },
-  },
   build: {
-    outDir: 'dist', // Папка для production-сборки
-    sourcemap: true, // Карты кода для отладки
+    outDir: 'dist',
+    emptyOutDir: true,
+    sourcemap: true,
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      },
+      output: {
+        entryFileNames: `assets/[name].[hash].js`,
+        chunkFileNames: `assets/[name].[hash].js`,
+        assetFileNames: `assets/[name].[hash].[ext]`
+      }
+    }
+  },
+  server: {
+    host: true,
+    port: 5173,
+    strictPort: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+    }
   },
   resolve: {
     alias: {
-      '@': '/src', // Алиас для импортов
-    },
-  },
+      '@': '/src'
+    }
+  }
 });
