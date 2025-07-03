@@ -1,0 +1,49 @@
+{
+  "name": "nasa-vk-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tunnel": "lt --port 5173 --subdomain nasa-vk-app",
+    "dev-with-tunnel": "concurrently -n \"VITE,TUNNEL\" -c \"bgBlue.bold,bgGreen.bold\" \"vite\" \"lt --port 5173 --subdomain nasa-vk-app\"",
+    "lint": "eslint src --ext ts,tsx --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vkontakte/vk-bridge": "^2.15.7",
+    "@vkontakte/vkui": "^7.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.1",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "@types/rollup-plugin-visualizer": "^5.0.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "localtunnel": "^2.0.2",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
